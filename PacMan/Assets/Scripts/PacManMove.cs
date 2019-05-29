@@ -1,0 +1,33 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PacManMove : MonoBehaviour
+{
+    public float speed = 0.4f;
+    Vector2 dest = Vector2.zero;
+
+    void Start() {
+        dest = transform.position;
+    }
+
+    // Update is called once per frame
+    void Update(){
+        Vector2 posicaoDestino = Vector2.MoveTowards(transform.position, dest, speed);
+        GetComponent<Rigidbody2D>().MovePosition(posicaoDestino);
+
+        if (Input.GetKey(KeyCode.UpArrow)){
+            dest = (Vector2)transform.position + Vector2.up;
+        }else if(Input.GetKey(KeyCode.DownArrow)){
+            dest = (Vector2)transform.position - Vector2.up;
+        }else if(Input.GetKey(KeyCode.LeftArrow)){
+            dest = (Vector2)transform.position - Vector2.right;
+        }else if(Input.GetKey(KeyCode.RightArrow)){
+            dest = (Vector2)transform.position + Vector2.right;
+        }
+        
+        Vector2 dir = dest - (Vector2)transform.position;
+        GetComponent<Animator>().SetFloat("DirX", dir.x);
+        GetComponent<Animator>().SetFloat("DirY", dir.y);
+    }
+}
