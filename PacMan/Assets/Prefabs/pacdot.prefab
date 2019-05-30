@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8069183684170757540}
   m_Layer: 0
   m_Name: pacdot
-  m_TagString: Untagged
+  m_TagString: ponto
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -5,11 +5,10 @@ using UnityEngine;
 public class GhostMove : MonoBehaviour
 {
     public Transform[] waypoints;
-  int cur = 0;
+    int cur = 0;
+    public float speed = 0.3f;
 
-  public float speed = 0.3f;
-
-    void FixedUpdate () {
+    void Update () {
         if (transform.position != waypoints[cur].position) {
             Vector2 p = Vector2.MoveTowards(transform.position, waypoints[cur].position, speed);
             GetComponent<Rigidbody2D>().MovePosition(p);
@@ -22,9 +21,9 @@ public class GhostMove : MonoBehaviour
         GetComponent<Animator>().SetFloat("DirY", dir.y);
     }
 
-   void OnTriggerEnter2D(Collider2D co) {
+    void OnTriggerEnter2D(Collider2D co) {
         if (co.name == "pacman")
-                Destroy(co.gameObject);
-   }
+            Destroy(co.gameObject);
+    }
 
 }
